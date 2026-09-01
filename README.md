@@ -74,7 +74,8 @@ for the full list of compatible tools. Target one specific tool with
 
 ## Install the full plugin (Claude Code only)
 
-One line, the standard way any Claude Code plugin installs:
+CONCISE is available as a Claude Code plugin marketplace. One line, the
+standard way any Claude Code plugin installs:
 
 ```
 claude plugin marketplace add 0xyph3r/CONCISE && claude plugin install concise@concise
@@ -83,6 +84,10 @@ claude plugin marketplace add 0xyph3r/CONCISE && claude plugin install concise@c
 That's it - no clone, no separate installer to run. Restart Claude Code
 (or start a new session) and it's active. On first session start it will
 also detect if your statusline isn't configured and offer to set it up.
+
+Prefer the interactive UI? Inside Claude Code, run `/plugin marketplace add
+0xyph3r/CONCISE`, then `/plugin install concise@concise` from the plugin
+browser.
 
 <details>
 <summary>Other ways to install the plugin</summary>
