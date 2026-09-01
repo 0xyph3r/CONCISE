@@ -74,8 +74,8 @@ for the full list of compatible tools. Target one specific tool with
 
 ## Install the full plugin (Claude Code only)
 
-CONCISE is available as a Claude Code plugin marketplace. One line, the
-standard way any Claude Code plugin installs:
+This repo doubles as a Claude Code plugin marketplace - add it once, then
+install like any other plugin:
 
 ```
 claude plugin marketplace add 0xyph3r/CONCISE && claude plugin install concise@concise
