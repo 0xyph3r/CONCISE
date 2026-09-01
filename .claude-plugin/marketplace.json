@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "concise",
+  "description": "Cuts prose filler from Claude Code responses while leaving code, analysis depth, and correctness untouched. Shows a live per-response prose-budget bar in the statusline.",
+  "owner": {
+    "name": "kasicea"
+  },
+  "plugins": [
+    {
+      "name": "concise",
+      "description": "Cuts prose filler from Claude Code responses while leaving code, analysis depth, and correctness untouched. Shows a live per-response prose-budget bar in the statusline.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

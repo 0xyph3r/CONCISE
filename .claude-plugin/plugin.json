@@ -1,0 +1,68 @@
+{
+  "name": "concise",
+  "version": "0.2.0",
+  "description": "Cuts prose filler from Claude Code responses (summaries, restated context, hedging) while leaving code, analysis depth, and correctness untouched. Shows a live per-response prose-budget bar in the statusline.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/concise-enforce.js\"",
+            "timeout": 5,
+            "statusMessage": "Loading concise mode..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/concise-remind.js\"",
+            "timeout": 5,
+            "statusMessage": "Reminding concise mode..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/concise-stats.js\"",
+            "timeout": 5,
+            "statusMessage": "Measuring response length..."
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/concise-stats.js\"",
+            "timeout": 5,
+            "statusMessage": "Measuring subagent response length..."
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Task",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/concise-inject-subagent.js\"",
+            "timeout": 5,
+            "statusMessage": "Injecting concise rules into subagent..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "@0xyph3r/concise",
+  "version": "0.2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Cuts prose filler from Claude Code responses while leaving code, analysis depth, and correctness untouched. Shows a live per-response prose-budget bar in the statusline.",
+  "license": "MIT",
+  "bin": {
+    "concise": "bin/install.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xyph3r/CONCISE.git"
+  },
+  "homepage": "https://github.com/0xyph3r/CONCISE",
+  "keywords": [
+    "claude-code",
+    "claude-code-plugin",
+    "agent-skills",
+    "ai-agent"
+  ]
+}
