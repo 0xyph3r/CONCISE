@@ -1,0 +1,41 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Node test suites
+        shell: bash
+        run: |
+          node tests/test_concise_config.js
+          node tests/test_concise_enforce.js
+          node tests/test_concise_stats.js
+          node tests/test_concise_remind.js
+          node tests/test_concise_history_stats.js
+          node tests/test_bin_install.js
+          node tests/test_benchmarks_run.js
+
+      - name: Bash statusline suite
+        shell: bash
+        run: bash tests/test_concise_statusline.sh
+
+      # Windows PowerShell 5.1 only exists on windows-latest - this is the
+      # exact runtime that caught the ANSI-escape mojibake bug during
+      # development, not the cross-platform pwsh/PowerShell 7.
+      - name: PowerShell statusline suite (Windows PowerShell 5.1)
+        if: runner.os == 'Windows'
+        run: powershell -ExecutionPolicy Bypass -File tests/test_concise_statusline.ps1

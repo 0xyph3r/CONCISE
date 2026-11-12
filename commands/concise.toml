@@ -1,0 +1,2 @@
+description = "Turn concise mode on/off or set the prose budget (/concise on|off|budget <words>)"
+prompt = "Apply concise mode setting: {{args}}. If 'off', stop compressing prose. If 'on' or empty, cut prose filler (summaries, restated context, hedging, long preambles) while keeping code, analysis depth, and correctness fully intact. If 'budget <n>', use that many words as the per-response prose target from now on."

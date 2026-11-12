@@ -1,0 +1,37 @@
+# CONCISE
+
+> Claude Code plugin and Agent Skill that cuts prose filler from AI coding
+> agent responses - trailing summaries, restated context, hedging,
+> over-long preambles - while leaving code, analysis depth, and
+> correctness fully intact. On Claude Code it also adds a live
+> per-response prose-budget bar in the statusline. Portable to any
+> [Agent Skills](https://agentskills.io) compatible tool (Cursor, GitHub
+> Copilot, Codex, Gemini CLI, and more) via `npx skills add
+> 0xyph3r/CONCISE`.
+
+## Install
+
+- Agent Skills, any compatible tool: `npx skills add 0xyph3r/CONCISE`
+- Claude Code plugin: `claude plugin marketplace add 0xyph3r/CONCISE && claude plugin install concise@concise`
+- npx installer (no marketplace): `npx github:0xyph3r/CONCISE`
+
+## Docs
+
+- [README](https://github.com/0xyph3r/CONCISE/blob/main/README.md): overview, install methods, commands, configuration
+- [Skill definition](https://github.com/0xyph3r/CONCISE/blob/main/skills/concise/SKILL.md): the portable compression ruleset, in Agent Skills format
+- [Command reference](https://github.com/0xyph3r/CONCISE/blob/main/skills/concise-help/SKILL.md): `/concise` commands and statusline format
+- [Plugin manifest](https://github.com/0xyph3r/CONCISE/blob/main/.claude-plugin/plugin.json): Claude Code hook wiring
+- [License](https://github.com/0xyph3r/CONCISE/blob/main/LICENSE): MIT
+
+## Notes
+
+- Compression targets prose (plus oversized code comments) - code logic,
+  commit messages, PR descriptions, analysis depth, and security-relevant
+  clarity are never touched.
+- The live statusline bar is Claude Code specific - it depends on
+  Claude Code's per-turn SessionStart/UserPromptSubmit/Stop hooks with
+  transcript access, which most other agent tools have no equivalent of.
+- Budget config resolves env var > project `.concise.json` > global config
+  file > default. A response under 8 prose words in a turn that edited a
+  file or ran a command is flagged `[terse?]` on the bar - a floor safety
+  check against over-compression, not a correctness verification.

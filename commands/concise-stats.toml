@@ -1,0 +1,2 @@
+description = "Show lifetime concise stats (turns tracked, avg % of budget, over-budget rate)"
+prompt = "/concise-stats"
